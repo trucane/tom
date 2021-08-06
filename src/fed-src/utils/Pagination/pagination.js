@@ -13,19 +13,16 @@ const Pagination = (props) => {
 
 
     const userAction = (value) => {
-        if (value  < 1){
+        if (value  < 1 || value === props.page){
             return null
         }
         if (value > pagesCount.length){
             return null
         }
-        props.action(value);
+        props.action({page:value});
        
     }
 
-    useEffect(() => {
-
-    }, [])
     return (
         <div className={'pagination'}>
             <div className={'item-count'}> {props?.title} {props.numOfItems}</div>

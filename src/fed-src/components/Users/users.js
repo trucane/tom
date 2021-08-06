@@ -11,7 +11,7 @@ const Users = (props) => {
         <div className="users">
 
             { props.users && props.users[0]
-                ? props.users.slice((props.page - 1) * 10, props.page * 10).map( (user, i) => <User key={i} vn={i} data={user}/>)
+                ? props.users.slice((props.page - 1) * 10, props.page * 10).map( (user, i) => <User key={user.id} data={user}/>)
                 
                 : <div>No Users</div>
             }

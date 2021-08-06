@@ -1,11 +1,16 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useReducer } from 'react';
 import Users from '../Users/users';
 import Pagination from '../../utils/Pagination/pagination';
 
-const Landing = () => {
 
+function reducer(state, action){
+    return{page:action.page}
+}
+
+const Landing = () => {
     const [users, setUsers] = useState([]);
-    const [page, setPage] = useState(1);
+    const [state, dispatch] = useReducer(reducer, {page:1})
+
 
     useEffect( () => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -14,22 +19,18 @@ const Landing = () => {
                 const moreData = [...data, ...data];
                 setUsers(moreData)
             })
-    }, [page]);
 
-
-    const paginate = (value) => {
-        setPage(value)
-    }
+    }, []);
 
     return (
         <Fragment>
-            <Users users={users} page={page}/>
+            <Users users={users} page={state.page} />
             {users && users.length > 0 && (
                 <Pagination
-                    numOfItems={18}
+                    numOfItems={users.length}
                     title={'Users'}
-                    page={page}
-                    action={paginate}
+                    page={state.page}
+                    action={dispatch}
                 />
             )}
         </Fragment>

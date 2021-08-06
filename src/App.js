@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route} from 'react-router-dom';
-
 import Landing from './fed-src/components/landing/landing';
 import UserProfile from './fed-src/components/Users/userProfile';
 import './App.css';

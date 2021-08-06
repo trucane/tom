@@ -8,7 +8,7 @@ import './users.css';
 
 
 
-const UserBadge = ({data, vn}) => {
+const UserBadge = ({data}) => {
     const {username, name, id, userImageURL} = data;
     return(
         <Fragment>
@@ -18,7 +18,7 @@ const UserBadge = ({data, vn}) => {
                         <img src={userimage} alt={name} />
                     </div>
                 </Link>
-                <div className='username'>{username + `${vn}`}</div>
+                <div className='username'>{username}</div>
                 <div className='username'>{name}</div>
             </div>
         </Fragment>
