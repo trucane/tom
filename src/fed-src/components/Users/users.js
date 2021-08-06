@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-
+import React, { Fragment, useState, useEffect } from 'react';
+import User from './user';
 
 
 
@@ -11,12 +11,17 @@ const Users = () => {
     useEffect( () => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
-            .then( data => console.log(data))
-            .then( data => setUsers(data))
+            .then( data => {setUsers(data)})
     }, []);
 
-    return(<Fragment>
-        User
+    return(
+    <Fragment>
+
+        { users && users[0]
+            ? users.map( (user, i) => <User key={user.id} data={user}/>)
+            
+            : <div>No Users</div>
+        }
     </Fragment>)
 }
 

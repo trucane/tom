@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import Users from '../Users/users';
 
 
 
@@ -8,9 +9,11 @@ import React, { Fragment, useState, useEffect } from 'react';
 const Landing = () => {
 
     return (<Fragment>
-        Landing
+        <Users />
     </Fragment>)
 }
+
+
 
 
 const Pagination = () => {
