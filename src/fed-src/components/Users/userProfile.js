@@ -18,6 +18,8 @@ const UserProfile = (props) => {
             .then( data => {setUser(data)})
     }, [])
 
+    console.log(user)
+
     return(
         <Fragment>
             {user && (
@@ -37,9 +39,15 @@ const UserProfile = (props) => {
                         <img src={userimage} alt={user.name} />
                     </div>
                     <div className ='profile-details' >
-                        <div className='profileusername'>{user.name}</div>
-                        <div className='profileusername'>{user.email}</div>
-                        <div className='profileaddress'>{user.address.city}</div>
+                        <div className='profile-name'>{user.name}</div>
+                        <div className='profileu-email'>{user.email}</div>
+
+
+                        <div className='profile-address'>
+                            <div className='profile-street'>{user.address.street}</div>
+                            <div className='profile-city'>{user.address.city}</div>
+                            <div className='profile-postalcode'>{user.address.zipcode}</div>
+                        </div>
                     </div>
                 </div>
             </div>
