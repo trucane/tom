@@ -8,7 +8,8 @@ const Landing = () => {
         <Fragment>
             <Users />
             <Pagination
-                numOfItems={null}
+                numOfItems={20}
+                title={'Users'}
             />
         </Fragment>
     )
