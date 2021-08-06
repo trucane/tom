@@ -1,0 +1,31 @@
+:root {
+  --blue: slateblue;
+}
+
+.pagination {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--blue);
+  padding: 1rem 2rem;
+  color: #fff;
+}
+
+.legend {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.legend > * {
+  margin-right: 10px;
+}
+
+.item-count {
+  flex: 1; /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

@@ -7,7 +7,9 @@ const Landing = () => {
     return (
         <Fragment>
             <Users />
-            <Pagination />
+            <Pagination
+                numOfItems={null}
+            />
         </Fragment>
     )
 }

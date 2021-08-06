@@ -16,7 +16,7 @@ const UserProfile = (props) => {
         fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             .then(response => response.json())
             .then( data => {setUser(data)})
-    }, [])
+    }, [userId])
 
     console.log(user)
 
