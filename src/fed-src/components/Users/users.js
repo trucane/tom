@@ -1,5 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import User from './user';
+import './users.css';
 
 
 
@@ -15,14 +16,14 @@ const Users = () => {
     }, []);
 
     return(
-        <Fragment>
+        <div className="users">
 
             { users && users[0]
                 ? users.map( (user, i) => <User key={user.id} data={user}/>)
                 
                 : <div>No Users</div>
             }
-    </Fragment>
+    </div>
     )
 }
 
