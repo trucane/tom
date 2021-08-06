@@ -15,14 +15,15 @@ const Users = () => {
     }, []);
 
     return(
-    <Fragment>
+        <Fragment>
 
-        { users && users[0]
-            ? users.map( (user, i) => <User key={user.id} data={user}/>)
-            
-            : <div>No Users</div>
-        }
-    </Fragment>)
+            { users && users[0]
+                ? users.map( (user, i) => <User key={user.id} data={user}/>)
+                
+                : <div>No Users</div>
+            }
+    </Fragment>
+    )
 }
 
 
