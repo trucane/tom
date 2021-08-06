@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import userimage from '../../utils/images/user.png';
 import './users.css';
@@ -7,14 +8,16 @@ import './users.css';
 
 
 
-const User = ({data}) => {
-    const {username, name, userImageURL} = data;
+const UserBadge = ({data}) => {
+    const {username, name, id, userImageURL} = data;
     return(
         <Fragment>
             <div className='user'>
-                <div className='user-image'>
-                    <img src={userimage} alt={name} />
-                </div>
+                <Link to={`/profile/${id}`}>
+                    <div className='user-image'>
+                        <img src={userimage} alt={name} />
+                    </div>
+                </Link>
                 <div className='username'>{username}</div>
                 <div className='username'>{name}</div>
             </div>
@@ -23,8 +26,9 @@ const User = ({data}) => {
 }
 
 
-User.propTypes = {
+UserBadge.propTypes = {
     data: PropTypes.shape({
+        id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
         userImageURL: PropTypes.string,
@@ -32,4 +36,4 @@ User.propTypes = {
 };
 
 
-export default User;
+export default UserBadge;
