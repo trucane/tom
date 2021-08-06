@@ -5,12 +5,26 @@ import './pagination.css';
 
 const Pagination = (props) => {
 
-    const [pagesCount, setPagesCount] = useState([1,2]);
-    const [page, setPage] = useState(1)
+    const [pagesCount, setPagesCount] = useState(null);
+    const [page, setPage] = useState(props.page)
+
+    useEffect( () => {
+        setPagesCount(Array.from(Array(Math.ceil(props.numOfItems / 10)).keys()))
+    }, [page])
 
 
-    const userAction = () => {
-        // props.action
+    const userAction = (value) => {
+        if (value  < 1){
+            return null
+        }
+        if (value > pagesCount.length){
+            return null
+        }
+        
+
+        setPage(value)
+        props.action(value);
+       
     }
 
     useEffect(() => {
@@ -21,11 +35,11 @@ const Pagination = (props) => {
             <div className={'item-count'}> {props?.title} {props.numOfItems}</div>
 
             <div className={'legend'}>
-                <button onClick={userAction} className={'btn prev-action'}> &#60; </button>
+                <button onClick={() => userAction(page - 1)} className={'btn prev-action'}> &#60; </button>
                 <div className ='btn-container'>
-                    {pagesCount.map( (a, i)=> <button key={i}  onClick={userAction} className={`btn ${page === (i + 1) ? 'active' : ''}`}> {(i+1)}</button>)}
+                    {pagesCount && pagesCount.map( (a, i)=> <button key={i}  onClick={() => userAction( i+ 1)} className={`btn ${page === (i + 1) ? 'active' : ''}`}> {(i+1)}</button>)}
                 </div>
-                <button onClick={userAction} className={'btn next-action'}> &#62; </button>
+                <button onClick={() => userAction(page + 1)} className={'btn next-action'}> &#62; </button>
             </div>
 
             {props?.itemsPer && (
@@ -38,11 +52,12 @@ const Pagination = (props) => {
 }
 
 Pagination.propTypes = {
-    props: PropTypes.shape({
+   
         title: PropTypes.string,
         itemsPer:PropTypes.number,
-        numOfItems: PropTypes.array.isRequired,
-    }),
+        numOfItems: PropTypes.number.isRequired,
+        page: PropTypes.number.isRequired,
+    
 }
 
 export default Pagination;

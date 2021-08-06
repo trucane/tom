@@ -4,13 +4,31 @@ import Pagination from '../../utils/Pagination/pagination';
 
 const Landing = () => {
 
+    const [users, setUsers] = useState([]);
+    const [page, setPage] = useState(1);
+
+    useEffect( () => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then( data => {setUsers(data)})
+    }, []);
+
+
+    const paginate = (value) => {
+        console.log(value)
+    }
+
     return (
         <Fragment>
-            <Users />
-            <Pagination
-                numOfItems={20}
-                title={'Users'}
-            />
+            <Users users={users}/>
+            {users && users.length > 0 && (
+                <Pagination
+                    numOfItems={18}
+                    title={'Users'}
+                    page={page}
+                    action={paginate}
+                />
+            )}
         </Fragment>
     )
 }
