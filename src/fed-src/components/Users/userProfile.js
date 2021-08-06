@@ -18,8 +18,6 @@ const UserProfile = (props) => {
             .then( data => {setUser(data)})
     }, [userId])
 
-    console.log(user)
-
     return(
         <Fragment>
             {user && (
@@ -57,14 +55,14 @@ const UserProfile = (props) => {
 }
 
 
-// UserProfile.propTypes = {
-//     data: PropTypes.shape({
-//         id: PropTypes.number.isRequired,
-//         name: PropTypes.string.isRequired,
-//         username: PropTypes.string.isRequired,
-//         userImageURL: PropTypes.string,
-//     }),
-// };
+UserProfile.propTypes = {
+    user: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        username: PropTypes.string.isRequired,
+        userImageURL: PropTypes.string,
+    }),
+};
 
 
 export default UserProfile;

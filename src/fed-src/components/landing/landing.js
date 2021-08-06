@@ -10,17 +10,20 @@ const Landing = () => {
     useEffect( () => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
-            .then( data => {setUsers(data)})
-    }, []);
+            .then( data => {
+                const moreData = [...data, ...data];
+                setUsers(moreData)
+            })
+    }, [page]);
 
 
     const paginate = (value) => {
-        console.log(value)
+        setPage(value)
     }
 
     return (
         <Fragment>
-            <Users users={users}/>
+            <Users users={users} page={page}/>
             {users && users.length > 0 && (
                 <Pagination
                     numOfItems={18}
