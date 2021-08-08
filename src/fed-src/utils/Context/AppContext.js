@@ -35,9 +35,9 @@ export function AppProvider({children}){
 
     return(
         <AppContext.Provider value={{users, page}}>
-                {children}
-            {/* <AppUpdateContext value={setPagination}>
-            </AppUpdateContext> */}
+            <AppUpdateContext.Provider value={setPagination}>
+                {children}    
+            </AppUpdateContext.Provider>
         </AppContext.Provider>
     )
 }
