@@ -13,10 +13,17 @@ const Landing = () => {
 
 
     useEffect( () => {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        // fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then(response => response.json())
+        //     .then( data => {
+        //         const moreData = [...data, ...data];
+        //         setUsers(moreData)
+        //     })
+        fetch('https://randomuser.me/api/?results=25')
             .then(response => response.json())
             .then( data => {
-                const moreData = [...data, ...data];
+                const moreData = [...data.results];
+                console.log(moreData)
                 setUsers(moreData)
             })
 
@@ -25,14 +32,14 @@ const Landing = () => {
     return (
         <Fragment>
             <Users users={users} page={state.page} />
-            {users && users.length > 0 && (
+            {/* {users && users.length > 0 && (
                 <Pagination
                     numOfItems={users.length}
                     title={'Users'}
                     page={state.page}
                     action={dispatch}
                 />
-            )}
+            )} */}
         </Fragment>
     )
 }
