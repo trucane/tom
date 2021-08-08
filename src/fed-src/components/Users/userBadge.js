@@ -10,13 +10,10 @@ import './users.css';
 const UserBadge = ({data}) => {
     const {name, id, picture} = data;
     const {first, last } = name; 
-
-    console.log(data)
     return(
         <Fragment>
             <div className='user'>
                 <Link to={`/profile`}>
-                {/* <Link to={`/profile/${id}`}> */}
                     <div className='user-image'>
                         <img src={picture.large} alt={`${first} ${last}`} />
                     </div>
